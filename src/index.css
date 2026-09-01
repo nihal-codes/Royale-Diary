@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-cinzel: 'Cinzel', serif;
+    --font-playfair: 'Playfair Display', serif;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'Fira Code', monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #030605;
+    color: #fef3c7;
+    overflow-x: hidden;
+    user-select: none;
+  }
+
+  h1, h2, h3, .font-cinzel {
+    font-family: var(--font-cinzel);
+  }
+  
+  .font-serif-display {
+    font-family: var(--font-playfair);
+  }
+}
+
+/* Custom 3D & Casino Utility Effects */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.perspective-2000 {
+  perspective: 2000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Felt Texture Generator using layered gradients */
+.poker-felt {
+  background: 
+    radial-gradient(circle at 50% 40%, rgba(20, 85, 45, 0.95) 0%, rgba(8, 48, 25, 0.98) 60%, rgba(3, 20, 10, 1) 100%),
+    radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.08) 0%, transparent 70%);
+  box-shadow: 
+    inset 0 0 120px rgba(0, 0, 0, 0.95),
+    inset 0 0 40px rgba(0, 0, 0, 0.8),
+    0 25px 80px rgba(0, 0, 0, 0.85);
+}
+
+/* Casino Table Wood Border Rim */
+.wood-rim {
+  background: linear-gradient(135deg, #2b1810 0%, #4a2817 25%, #1f100a 50%, #3d2113 75%, #180b06 100%);
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  box-shadow: 
+    inset 0 2px 10px rgba(255, 255, 255, 0.2),
+    inset 0 -5px 20px rgba(0, 0, 0, 0.9),
+    0 30px 90px rgba(0, 0, 0, 0.9);
+}
+
+/* Gold Brass Accent Line */
+.gold-inlay {
+  border: 1.5px solid rgba(234, 179, 8, 0.55);
+  box-shadow: 
+    0 0 12px rgba(234, 179, 8, 0.3),
+    inset 0 0 10px rgba(234, 179, 8, 0.25);
+}
+
+/* Custom Scrollbar for Modal */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 18, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(217, 119, 6, 0.5);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(217, 119, 6, 0.8);
+}
+
+/* Metallic Text Gradient */
+.gold-text-gradient {
+  background: linear-gradient(135deg, #fef08a 0%, #d97706 40%, #fef3c7 70%, #b45309 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.silver-text-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #94a3b8 50%, #f8fafc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subtle Table Parallax transition */
+.table-parallax-smooth {
+  transition: transform 0.15s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.02); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
