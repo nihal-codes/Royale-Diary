@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { PlayingCard } from './PlayingCard';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 export const CardFan = ({
   cards = [],
@@ -10,15 +11,16 @@ export const CardFan = ({
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [returningIndex, setReturningIndex] = useState(null);
+  const isMobile = useIsMobile();
 
   // Fan geometry calculation
   const total = cards.length;
-  const maxAngle = 20;
+  const maxAngle = isMobile ? 14 : 20;
   const angleStep = total > 1 ? maxAngle / (total - 1) : 0;
   const startAngle = -maxAngle / 2;
 
   // Base horizontal spacing between cards in the fan
-  const cardSpacing = 82;
+  const cardSpacing = isMobile ? 36 : 82;
 
   const handleHoverEnd = (index) => {
     setHoveredIndex((prev) => (prev === index ? null : prev));
@@ -30,7 +32,7 @@ export const CardFan = ({
   };
 
   return (
-    <div className="relative flex items-center justify-center h-85 w-full perspective-1000">
+    <div className="relative flex items-center justify-center h-60 md:h-85 w-full perspective-1000">
       <div className="relative flex items-center justify-center transform-style-3d">
         {cards.map((card, index) => {
           const isHovered = hoveredIndex === index;
@@ -40,15 +42,17 @@ export const CardFan = ({
           // Natural poker fan radial math
           const rawAngle = startAngle + index * angleStep;
           const currentAngle = isHovered ? 0 : rawAngle;
-          const arcOffset = Math.pow(index - (total - 1) / 2, 2) * 3;
+          const arcOffset = Math.pow(index - (total - 1) / 2, 2) * (isMobile ? 2 : 3);
 
           // Dynamic Push-Away Gap Math
           let pushX = 0;
           if (hoveredIndex !== null && !isHovered) {
+            const basePush = isMobile ? 18 : 55;
+            const extraPush = isMobile ? 5 : 14;
             if (index < hoveredIndex) {
-              pushX = -55 - (hoveredIndex - index - 1) * 14;
+              pushX = -basePush - (hoveredIndex - index - 1) * extraPush;
             } else if (index > hoveredIndex) {
-              pushX = 55 + (index - hoveredIndex - 1) * 14;
+              pushX = basePush + (index - hoveredIndex - 1) * extraPush;
             }
           }
 
@@ -56,7 +60,7 @@ export const CardFan = ({
           const targetX = baseX + pushX;
 
           // 3D Z-axis elevation
-          const targetZ = isHovered ? 90 : (index * 8);
+          const targetZ = isHovered ? (isMobile ? 40 : 90) : (index * 8);
           // Keep zIndex elevated during both hover and return animation to prevent layer clipping
           const activeZIndex = isHovered || isReturning ? 60 : index + 10;
 
@@ -68,7 +72,7 @@ export const CardFan = ({
               animate={{
                 opacity: 1,
                 x: targetX,
-                y: isHovered ? -50 : arcOffset,
+                y: isHovered ? (isMobile ? -25 : -50) : arcOffset,
                 z: targetZ,
                 rotate: currentAngle,
                 scale: isHovered ? 1.08 : (hoveredIndex !== null ? 0.92 : 1),

@@ -24,19 +24,19 @@ export const OverviewModal = ({ isOpen = false, onClose, onSelectWeek }) => {
         onClick={onClose}
       >
         <motion.div
-          className="relative w-full max-w-2xl rounded-3xl border-2 border-amber-400/80 bg-stone-950 p-6 shadow-[0_0_80px_rgba(234,179,8,0.3)] text-amber-100 space-y-6 max-h-[90vh] overflow-y-auto pointer-events-auto"
+          className="relative w-full max-w-2xl rounded-3xl border-2 border-amber-400/80 bg-stone-950 p-4 sm:p-6 shadow-[0_0_80px_rgba(234,179,8,0.3)] text-amber-100 space-y-4 sm:space-y-6 max-h-[88vh] overflow-y-auto pointer-events-auto"
           initial={{ scale: 0.9, y: 20 }}
           animate={{ scale: 1, y: 0 }}
           exit={{ scale: 0.9, y: 20 }}
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-amber-500/30 pb-4">
+          <div className="flex items-center justify-between border-b border-amber-500/30 pb-3 sm:pb-4">
             <div>
-              <span className="text-[10px] font-mono text-emerald-400 tracking-widest uppercase">
+              <span className="text-[9px] sm:text-[10px] font-mono text-emerald-400 tracking-widest uppercase">
                 HIGH STAKES ANALYTICS
               </span>
-              <h2 className="font-cinzel text-lg font-bold text-amber-300">
+              <h2 className="font-cinzel text-base sm:text-lg font-bold text-amber-300">
                 TRAINING DIARY DASHBOARD
               </h2>
             </div>
@@ -44,31 +44,31 @@ export const OverviewModal = ({ isOpen = false, onClose, onSelectWeek }) => {
               onClick={onClose}
               className="p-1.5 rounded-xl bg-stone-900 border border-amber-500/40 text-amber-300 hover:text-amber-100 cursor-pointer"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </div>
 
           {/* Core Metrics Banner */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <div className="p-3.5 rounded-2xl bg-stone-900/90 border border-amber-500/30 text-center">
-              <Sparkles className="w-4 h-4 text-amber-400 mx-auto mb-1" />
-              <span className="text-[9px] font-mono text-amber-300/70 block">CARDS DEALT</span>
-              <span className="font-cinzel font-bold text-amber-100 text-lg">{totalCards} Days</span>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
+            <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-stone-900/90 border border-amber-500/30 text-center">
+              <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 mx-auto mb-1" />
+              <span className="text-[8px] sm:text-[9px] font-mono text-amber-300/70 block">CARDS DEALT</span>
+              <span className="font-cinzel font-bold text-amber-100 text-sm sm:text-lg">{totalCards} Days</span>
             </div>
-            <div className="p-3.5 rounded-2xl bg-stone-900/90 border border-amber-500/30 text-center">
-              <Clock className="w-4 h-4 text-amber-400 mx-auto mb-1" />
-              <span className="text-[9px] font-mono text-amber-300/70 block">TOTAL HOURS</span>
-              <span className="font-cinzel font-bold text-amber-100 text-lg">{totalHours} Hrs</span>
+            <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-stone-900/90 border border-amber-500/30 text-center">
+              <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 mx-auto mb-1" />
+              <span className="text-[8px] sm:text-[9px] font-mono text-amber-300/70 block">TOTAL HOURS</span>
+              <span className="font-cinzel font-bold text-amber-100 text-sm sm:text-lg">{totalHours} Hrs</span>
             </div>
-            <div className="p-3.5 rounded-2xl bg-stone-900/90 border border-amber-500/30 text-center">
-              <GitCommit className="w-4 h-4 text-emerald-400 mx-auto mb-1" />
-              <span className="text-[9px] font-mono text-amber-300/70 block">GIT COMMITS</span>
-              <span className="font-cinzel font-bold text-emerald-300 text-lg">{totalCommits}</span>
+            <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-stone-900/90 border border-amber-500/30 text-center">
+              <GitCommit className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 mx-auto mb-1" />
+              <span className="text-[8px] sm:text-[9px] font-mono text-amber-300/70 block">GIT COMMITS</span>
+              <span className="font-cinzel font-bold text-emerald-300 text-sm sm:text-lg">{totalCommits}</span>
             </div>
-            <div className="p-3.5 rounded-2xl bg-stone-900/90 border border-amber-500/30 text-center">
-              <Code2 className="w-4 h-4 text-blue-400 mx-auto mb-1" />
-              <span className="text-[9px] font-mono text-amber-300/70 block">LINES OF CODE</span>
-              <span className="font-cinzel font-bold text-blue-300 text-lg">+{totalLines}</span>
+            <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-stone-900/90 border border-amber-500/30 text-center">
+              <Code2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-400 mx-auto mb-1" />
+              <span className="text-[8px] sm:text-[9px] font-mono text-amber-300/70 block">LINES OF CODE</span>
+              <span className="font-cinzel font-bold text-blue-300 text-sm sm:text-lg">+{totalLines}</span>
             </div>
           </div>
 

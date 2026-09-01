@@ -15,19 +15,19 @@ export const GuideOverlay = ({ isOpen = false, onClose }) => {
         onClick={onClose}
       >
         <motion.div
-          className="relative w-full max-w-xl rounded-3xl border-2 border-amber-400/80 bg-stone-950 p-6 shadow-[0_0_60px_rgba(234,179,8,0.3)] text-amber-100 space-y-6 pointer-events-auto"
+          className="relative w-full max-w-xl rounded-3xl border-2 border-amber-400/80 bg-stone-950 p-4 sm:p-6 shadow-[0_0_60px_rgba(234,179,8,0.3)] text-amber-100 space-y-4 sm:space-y-6 pointer-events-auto max-h-[88vh] overflow-y-auto"
           initial={{ scale: 0.9, y: 20 }}
           animate={{ scale: 1, y: 0 }}
           exit={{ scale: 0.9, y: 20 }}
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-amber-500/30 pb-4">
+          <div className="flex items-center justify-between border-b border-amber-500/30 pb-3 sm:pb-4">
             <div>
-              <span className="text-[10px] font-mono text-emerald-400 tracking-widest uppercase">
+              <span className="text-[9px] sm:text-[10px] font-mono text-emerald-400 tracking-widest uppercase">
                 CASINO LOBBY GUIDE
               </span>
-              <h2 className="font-cinzel text-lg font-bold text-amber-300">
+              <h2 className="font-cinzel text-base sm:text-lg font-bold text-amber-300">
                 HOW TO EXPLORE THE ROYALE DIARY
               </h2>
             </div>
@@ -35,64 +35,64 @@ export const GuideOverlay = ({ isOpen = false, onClose }) => {
               onClick={onClose}
               className="p-1.5 rounded-xl bg-stone-900 border border-amber-500/40 text-amber-300 hover:text-amber-100 cursor-pointer"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </div>
 
           {/* Guide Steps Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="p-4 rounded-2xl bg-stone-900/80 border border-amber-500/20 space-y-2">
-              <div className="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-400/50 flex items-center justify-center text-amber-300">
-                <ZoomIn className="w-4 h-4" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-stone-900/80 border border-amber-500/20 space-y-1.5 sm:space-y-2">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-amber-500/20 border border-amber-400/50 flex items-center justify-center text-amber-300">
+                <ZoomIn className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </div>
-              <h4 className="font-cinzel text-xs font-bold text-amber-200 uppercase">
+              <h4 className="font-cinzel text-[11px] sm:text-xs font-bold text-amber-200 uppercase">
                 1. Select a Player (Week)
               </h4>
-              <p className="text-xs text-amber-100/80 leading-relaxed font-sans">
-                Hover over any of the 4 players around the table (Week 1 to Week 4) and click to zoom the camera in.
+              <p className="text-[11px] sm:text-xs text-amber-100/80 leading-relaxed font-sans">
+                Tap or hover any of the 4 players around the table (Week 1 to Week 4) to zoom the camera in.
               </p>
             </div>
 
-            <div className="p-4 rounded-2xl bg-stone-900/80 border border-amber-500/20 space-y-2">
-              <div className="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-400/50 flex items-center justify-center text-emerald-300">
-                <Layers className="w-4 h-4" />
+            <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-stone-900/80 border border-amber-500/20 space-y-1.5 sm:space-y-2">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-500/20 border border-emerald-400/50 flex items-center justify-center text-emerald-300">
+                <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </div>
-              <h4 className="font-cinzel text-xs font-bold text-amber-200 uppercase">
+              <h4 className="font-cinzel text-[11px] sm:text-xs font-bold text-amber-200 uppercase">
                 2. Poker Card Fan
               </h4>
-              <p className="text-xs text-amber-100/80 leading-relaxed font-sans">
-                The 6 cards will spread out into an authentic poker fan. Hover over any card to lift it and bring it closer.
+              <p className="text-[11px] sm:text-xs text-amber-100/80 leading-relaxed font-sans">
+                The 6 cards will spread out into an authentic poker fan. Tap or hover any card to bring it closer.
               </p>
             </div>
 
-            <div className="p-4 rounded-2xl bg-stone-900/80 border border-amber-500/20 space-y-2">
-              <div className="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-400/50 flex items-center justify-center text-blue-300">
-                <FlipHorizontal className="w-4 h-4" />
+            <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-stone-900/80 border border-amber-500/20 space-y-1.5 sm:space-y-2">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-blue-500/20 border border-blue-400/50 flex items-center justify-center text-blue-300">
+                <FlipHorizontal className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </div>
-              <h4 className="font-cinzel text-xs font-bold text-amber-200 uppercase">
+              <h4 className="font-cinzel text-[11px] sm:text-xs font-bold text-amber-200 uppercase">
                 3. 3D Card Flip
               </h4>
-              <p className="text-xs text-amber-100/80 leading-relaxed font-sans">
-                Click a card to perform a 3D flip animation revealing the training log, tech chips, and code snippets.
+              <p className="text-[11px] sm:text-xs text-amber-100/80 leading-relaxed font-sans">
+                Click or tap a card to perform a 3D flip animation revealing the training log & tech chips.
               </p>
             </div>
 
-            <div className="p-4 rounded-2xl bg-stone-900/80 border border-amber-500/20 space-y-2">
-              <div className="w-8 h-8 rounded-lg bg-purple-500/20 border border-purple-400/50 flex items-center justify-center text-purple-300">
-                <Keyboard className="w-4 h-4" />
+            <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-stone-900/80 border border-amber-500/20 space-y-1.5 sm:space-y-2">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-purple-500/20 border border-purple-400/50 flex items-center justify-center text-purple-300">
+                <Keyboard className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </div>
-              <h4 className="font-cinzel text-xs font-bold text-amber-200 uppercase">
-                4. Keyboard Controls
+              <h4 className="font-cinzel text-[11px] sm:text-xs font-bold text-amber-200 uppercase">
+                4. Controls & Navigation
               </h4>
-              <p className="text-xs text-amber-100/80 leading-relaxed font-sans">
-                Press <code className="px-1 py-0.5 rounded bg-stone-800 border border-amber-500/40 text-amber-300 font-mono text-[10px]">ESC</code> anytime to flip back or return to table view.
+              <p className="text-[11px] sm:text-xs text-amber-100/80 leading-relaxed font-sans">
+                Press <code className="px-1 py-0.5 rounded bg-stone-800 border border-amber-500/40 text-amber-300 font-mono text-[10px]">ESC</code> or tap Back to return to table view anytime.
               </p>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="w-full py-3 rounded-2xl bg-linear-to-r from-amber-500 via-amber-600 to-amber-500 text-stone-950 font-cinzel font-black text-xs tracking-widest uppercase hover:brightness-110 transition-all shadow-lg cursor-pointer"
+            className="w-full py-2.5 sm:py-3 rounded-xl sm:rounded-2xl bg-linear-to-r from-amber-500 via-amber-600 to-amber-500 text-stone-950 font-cinzel font-black text-xs tracking-widest uppercase hover:brightness-110 transition-all shadow-lg cursor-pointer"
           >
             ENTER THE CASINO ROOM
           </button>

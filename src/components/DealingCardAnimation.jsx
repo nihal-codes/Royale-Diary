@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useAudio } from '../context/AudioContext';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 export const DealingCardAnimation = ({
   isDealing = false,
@@ -8,6 +9,7 @@ export const DealingCardAnimation = ({
 }) => {
   const { playDeal } = useAudio();
   const [dealtCards, setDealtCards] = useState([]);
+  const isMobile = useIsMobile();
 
   // Player position targets around table from CENTER (0, 0)
   const playerTargets = [
@@ -18,6 +20,13 @@ export const DealingCardAnimation = ({
   ];
 
   useEffect(() => {
+    if (isMobile) {
+      if (isDealing && onDealingComplete) {
+        onDealingComplete();
+      }
+      return;
+    }
+
     if (!isDealing) {
       setDealtCards([]);
       return;
@@ -59,9 +68,9 @@ export const DealingCardAnimation = ({
     }, 140); // Elegant, majestic royal deal speed (140ms interval)
 
     return () => clearInterval(interval);
-  }, [isDealing]);
+  }, [isDealing, isMobile]);
 
-  if (!isDealing) return null;
+  if (!isDealing || isMobile) return null;
 
   return (
     <div className="absolute inset-0 pointer-events-none z-40 flex items-center justify-center">
