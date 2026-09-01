@@ -4,6 +4,11 @@ export const useMouseParallax = (intensity = 1) => {
   const [coords, setCoords] = useState({ x: 0, y: 0, rotateX: 0, rotateY: 0 });
 
   useEffect(() => {
+    // Disable mouse parallax calculations on mobile devices for smooth 60fps performance
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      return;
+    }
+
     let animationFrameId;
 
     const handleMouseMove = (e) => {

@@ -12,11 +12,13 @@ export const CasinoTable = ({
 
   return (
     <div className="relative w-full h-full flex items-center justify-center perspective-2000 overflow-hidden">
-      {/* 3D Parallax Tilt Table Container */}
+      {/* 3D Parallax Tilt Table Container (Flattened on mobile to eliminate GPU lag) */}
       <motion.div
         className="relative w-[96vw] md:w-[92vw] max-w-7xl h-[82vh] md:h-[78vh] max-h-187.5 rounded-[48px] md:rounded-[180px] p-2 md:p-6 table-parallax-smooth"
         style={{
-          transform: `rotateX(${ (isMobile ? 4 : 18) + mouseCoords.rotateX * 0.4}deg) rotateY(${mouseCoords.rotateY * 0.4}deg) scale(${zoomLevel})`
+          transform: isMobile
+            ? `scale(${zoomLevel})`
+            : `rotateX(${18 + mouseCoords.rotateX * 0.4}deg) rotateY(${mouseCoords.rotateY * 0.4}deg) scale(${zoomLevel})`
         }}
       >
         {/* Outer Wooden Border Rim */}
@@ -44,7 +46,9 @@ export const CasinoTable = ({
 
           {/* Center Table Spotlight Highlight */}
           <div
-            className="absolute w-72 h-44 md:w-150 md:h-87.5 rounded-full pointer-events-none blur-3xl opacity-30"
+            className={`absolute w-72 h-44 md:w-150 md:h-87.5 rounded-full pointer-events-none opacity-30 ${
+              isMobile ? 'blur-xl' : 'blur-3xl'
+            }`}
             style={{
               background: 'radial-gradient(circle, rgba(254,240,138,0.4) 0%, rgba(16,185,129,0.3) 60%, transparent 100%)'
             }}

@@ -48,15 +48,17 @@ export const PlayingCard = ({
     >
       {/* 3D Rotating Wrapper */}
       <motion.div
-        className="w-full h-full relative transform-style-3d shadow-2xl rounded-xl md:rounded-2xl"
+        className="w-full h-full relative transform-style-3d shadow-md md:shadow-2xl rounded-xl md:rounded-2xl"
         animate={{
           rotateY: isFlipped ? 180 : 0
         }}
-        transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: isMobile ? 0.35 : 0.65, ease: isMobile ? 'easeInOut' : [0.16, 1, 0.3, 1] }}
       >
         {/* ==================== CARD BACK (100% Solid Opaque Dark Stone/Felt) ==================== */}
         <div
-          className="absolute inset-0 w-full h-full rounded-xl md:rounded-2xl backface-hidden overflow-hidden border-2 border-amber-500/70 shadow-[0_15px_35px_rgba(0,0,0,0.95)] bg-[#0a0e0c] opacity-100"
+          className={`absolute inset-0 w-full h-full rounded-xl md:rounded-2xl backface-hidden overflow-hidden border-2 border-amber-500/70 bg-[#0a0e0c] opacity-100 ${
+            isMobile ? 'shadow-md' : 'shadow-[0_15px_35px_rgba(0,0,0,0.95)]'
+          }`}
           style={{
             backgroundImage: `
               radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.2) 0%, rgba(5, 15, 10, 1) 75%),
@@ -70,7 +72,7 @@ export const PlayingCard = ({
 
           {/* Center Royal Seal */}
           <div className="absolute inset-0 flex flex-col items-center justify-center p-2 md:p-4 bg-[#0a0e0c]/90">
-            <div className="w-10 h-10 md:w-16 md:h-16 rounded-full border-2 border-amber-400/80 flex items-center justify-center bg-stone-950 shadow-[0_0_20px_rgba(234,179,8,0.3)]">
+            <div className="w-10 h-10 md:w-16 md:h-16 rounded-full border-2 border-amber-400/80 flex items-center justify-center bg-stone-950 shadow-md md:shadow-[0_0_20px_rgba(234,179,8,0.3)]">
               <span className="font-cinzel text-sm md:text-2xl font-black text-amber-400 tracking-widest">
                 RD
               </span>
@@ -92,7 +94,9 @@ export const PlayingCard = ({
 
         {/* ==================== CARD FRONT (100% Solid Opaque Dark Velvet/Stone) ==================== */}
         <div
-          className="absolute inset-0 w-full h-full rounded-xl md:rounded-2xl backface-hidden rotate-y-180 overflow-hidden border-2 border-amber-400/90 shadow-[0_20px_50px_rgba(0,0,0,0.98)] bg-[#0d120f] opacity-100 p-2 md:p-4 flex flex-col justify-between"
+          className={`absolute inset-0 w-full h-full rounded-xl md:rounded-2xl backface-hidden rotate-y-180 overflow-hidden border-2 border-amber-400/90 bg-[#0d120f] opacity-100 p-2 md:p-4 flex flex-col justify-between ${
+            isMobile ? 'shadow-md' : 'shadow-[0_20px_50px_rgba(0,0,0,0.98)]'
+          }`}
         >
           {/* Metallic Inner Border */}
           <div className="absolute inset-1 md:inset-1.5 rounded-lg md:rounded-xl border border-amber-500/50 pointer-events-none" />

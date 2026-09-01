@@ -49,8 +49,8 @@ export const PlayerPosition = ({
         opacity: isIntroDealing ? 0 : isDimmed ? 0.15 : 1
       }}
       transition={{
-        duration: 0.5,
-        ease: [0.16, 1, 0.3, 1] // Silky smooth royal transition
+        duration: isMobile ? 0.2 : 0.5,
+        ease: 'easeOut'
       }}
       onClick={handlePlayerClick}
       onMouseEnter={handleMouseEnter}
@@ -58,12 +58,12 @@ export const PlayerPosition = ({
     >
       {/* Player Week Badge Header (Centered ABOVE the cards) */}
       <div
-        className={`cursor-pointer mb-1 md:mb-2.5 px-2 py-1 md:px-4 md:py-2 rounded-lg md:rounded-xl border backdrop-blur-md transition-all duration-500 ease-out flex items-center justify-center ${
+        className={`cursor-pointer mb-1 md:mb-2.5 px-2 py-1 md:px-4 md:py-2 rounded-lg md:rounded-xl border backdrop-blur-md transition-all duration-300 ease-out flex items-center justify-center ${
           isSelected
-            ? 'bg-amber-500/25 border-amber-400 text-amber-200 shadow-[0_0_30px_rgba(234,179,8,0.4)]'
+            ? 'bg-amber-500/25 border-amber-400 text-amber-200 shadow-md md:shadow-[0_0_30px_rgba(234,179,8,0.4)]'
             : isHovered
-            ? 'bg-emerald-950/90 border-emerald-400/80 text-emerald-200 shadow-[0_0_25px_rgba(16,185,129,0.35)]'
-            : 'bg-stone-900/85 border-amber-500/30 text-amber-100/80 shadow-lg'
+            ? 'bg-emerald-950/90 border-emerald-400/80 text-emerald-200 shadow-md md:shadow-[0_0_25px_rgba(16,185,129,0.35)]'
+            : 'bg-stone-900/85 border-amber-500/30 text-amber-100/80 shadow-md'
         }`}
       >
         <div className="flex items-center justify-center gap-1.5 md:gap-2.5">
@@ -81,7 +81,7 @@ export const PlayerPosition = ({
           </div>
 
           <ChevronRight
-            className={`w-3 h-3 md:w-4 md:h-4 transition-transform duration-500 ease-out ${
+            className={`w-3 h-3 md:w-4 md:h-4 transition-transform duration-300 ease-out ${
               isHovered || isSelected ? 'translate-x-1 text-amber-400' : 'text-amber-500/50'
             }`}
           />
@@ -93,12 +93,12 @@ export const PlayerPosition = ({
         {weekData.cards.map((card, idx) => {
           const step = isMobile ? 6 : 12;
           const offset = (idx - 2.5) * step;
-          const rot = (idx - 2.5) * 4.5;
+          const rot = (idx - 2.5) * (isMobile ? 2 : 4.5);
 
           return (
             <motion.div
               key={card.day}
-              className="absolute shadow-xl will-change-transform"
+              className="absolute shadow-md md:shadow-xl will-change-transform"
               style={{
                 width: isMobile ? '56px' : '85px',
                 height: isMobile ? '80px' : '120px'
@@ -110,11 +110,11 @@ export const PlayerPosition = ({
                 zIndex: idx
               }}
               transition={{
-                duration: 0.5,
-                ease: [0.16, 1, 0.3, 1] // Royal smooth ease
+                duration: isMobile ? 0.2 : 0.5,
+                ease: 'easeOut'
               }}
             >
-              <div className="w-full h-full rounded-md md:rounded-lg border border-amber-500/50 bg-linear-to-br from-stone-900 via-zinc-950 to-emerald-950 p-0.5 md:p-1 flex flex-col justify-between shadow-2xl overflow-hidden">
+              <div className="w-full h-full rounded-md md:rounded-lg border border-amber-500/50 bg-linear-to-br from-stone-900 via-zinc-950 to-emerald-950 p-0.5 md:p-1 flex flex-col justify-between shadow-md md:shadow-2xl overflow-hidden">
                 <div className="inset-0.5 border border-amber-400/20 rounded h-full w-full flex flex-col items-center justify-center">
                   <span className="font-cinzel text-[8px] md:text-[10px] font-black text-amber-400/80">
                     ♠

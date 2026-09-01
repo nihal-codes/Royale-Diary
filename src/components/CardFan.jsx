@@ -60,7 +60,7 @@ export const CardFan = ({
           const targetX = baseX + pushX;
 
           // 3D Z-axis elevation
-          const targetZ = isHovered ? (isMobile ? 40 : 90) : (index * 8);
+          const targetZ = isHovered ? (isMobile ? 20 : 90) : (index * 4);
           // Keep zIndex elevated during both hover and return animation to prevent layer clipping
           const activeZIndex = isHovered || isReturning ? 60 : index + 10;
 
@@ -79,8 +79,8 @@ export const CardFan = ({
                 zIndex: activeZIndex
               }}
               transition={{
-                duration: 0.5,
-                ease: [0.16, 1, 0.3, 1] // Royal cubic-bezier ease
+                duration: isMobile ? 0.25 : 0.5,
+                ease: isMobile ? 'easeOut' : [0.16, 1, 0.3, 1]
               }}
               style={{
                 transformOrigin: 'bottom center'
