@@ -154,7 +154,7 @@ I also took part in AI-assisted design and generative media tasks, which gave me
 | **Total engagement** | ~200+ hrs |
 | **Projects delivered** | 6 |
 | **Git commits** | 40+ |
-| **Deployments** | 2 projects deployed, 1 showcased on LinkedIn |
+| **Deployments** | 4 projects deployed |
 
 ---
 
